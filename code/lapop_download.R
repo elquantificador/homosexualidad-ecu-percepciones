@@ -1,0 +1,18 @@
+# Artículo Percepciones de la Homosexualidad en Ecuador
+# Junio 2023
+# Descarga de la base de datos AmericasBarometer de LAPOP
+
+# Preliminares ------------------------------------------------------------
+
+# Cargar librerías
+
+if(!require(here)) install.packages("here", repos = "http://cran.us.r-project.org")
+if(!require(downloader)) install.packages("downloader", repos = "http://cran.us.r-project.org")
+if(!require(readr)) install.packages("downloader", repos = "http://cran.us.r-project.org")
+
+# Cargar datos preparados desde el repositorio de GitHub del LIDE para esta base de datos
+
+url <- 'https://raw.githubusercontent.com/laboratoriolide/americas-barometer/main/output/csv/ab_04_09.csv'
+
+download.file(url, here('data/ab_04_19.csv'))
+
