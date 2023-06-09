@@ -7,8 +7,6 @@
 # Cargar librerías
 
 if(!require(here)) install.packages("here", repos = "http://cran.us.r-project.org")
-if(!require(downloader)) install.packages("downloader", repos = "http://cran.us.r-project.org")
-if(!require(readr)) install.packages("downloader", repos = "http://cran.us.r-project.org")
 
 # Cargar datos preparados desde el repositorio de GitHub del LIDE para esta base de datos
 
