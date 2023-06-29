@@ -93,9 +93,25 @@ matrimonios <-
   
 # Análisis ----------------------------------------------------------------
 
-# Crear una gráfica de serie de tiempo para matrimonios
-
 grafico_matrimonios <-
+  grafico_matrimonios_comp <-
+  matrimonios %>% 
+  filter(orientacion == 'Mismo sexo',
+         periodo > as.Date('2019-06-01')) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
+  ggplot(aes(periodo, num)) +
+  geom_col(fill = quant_blue, colour = 'black') +
+  scale_x_date(date_breaks = '3 months', 
+               date_labels = '%b-%y') +
+  theme_article_pride +
+  labs(x = '',
+       y = 'Número de matrimonios registrados del mismo sexo')
+  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) 
+
+grafico_matrimonios
+
+# Crear una gráfica de serie de tiempo para matrimonios mismo sexo vs diferente sexo
+
+grafico_matrimonios_comp <-
   matrimonios %>% 
   # filter(orientacion == 'Mismo sexo') %>% 
   ggplot(aes(periodo, log(num), colour = orientacion)) +
