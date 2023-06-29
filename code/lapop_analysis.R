@@ -35,7 +35,7 @@ quant_red<-'#F44D54'
 # Creamos un theme para los gráficos de ggplot2
 
 theme_article_pride <-
-  theme_bw() +
+  theme_bw(base_size = 14) +
   theme(panel.grid = element_blank(),
         axis.text.y = element_blank(),
         plot.caption = element_text(hjust = 0, face = 'italic'),
@@ -89,7 +89,7 @@ grafico1 <-
             size = 4,
             vjust = 6.5)+
   labs(x = '',
-       y = '% de aprobación',
+       y = '% de aprobación de población en edad de votar (16+)',
        title = 'Aprobación del matrimonio igualitario en Ecuador',
        subtitle = '¿Con qué firmeza aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
        caption = str_wrap(caption_grafo1, 205))+
@@ -100,7 +100,9 @@ ggsave("figures/grafico1_lapop_pride.png", device = "png", width = 12.5, height 
 
 
 caption_grafo2<-
-  'Las cifras representan el % de personas que respondieron puntuaciones del 6 al 10 en la pregunta, donde 1 es extrema desaprobación y 10 es extrema aprobación. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. Las encuestas fueron realizadas de enero a marzo de cada año, excepto la ronda 2016, realizada de noviembre 2016 a enero 2017. Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org. '
+  'Las cifras representan el % de personas que respondieron puntuaciones del 6 al 10 en la pregunta, donde 1 es extrema desaprobación y 10 es extrema aprobación. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. 
+  Las encuestas fueron realizadas de enero a marzo de cada año, excepto la ronda 2016, realizada de noviembre 2016 a enero 2017. La encuesta del 2019 se realizó antes de junio 2019, cuando el matrimonio igualitario en Ecuador fue aceptado por la Corte Constitucional. 
+Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org.'
 
 grafico2 <- 
   ggplot(hsmxl_marr_time, aes(x = as.factor(year), y = hmsxl_marr))+
@@ -114,14 +116,18 @@ grafico2 <-
             size = 4,
             vjust = 6.5)+
   labs(x = '',
-       y = '% de aprobación',
+       y = '% de aprobación de población en edad de votar (16+)',
        title = 'Aprobación del derecho a postularse a cargos políticos de la comunidad homosexual en Ecuador',
        subtitle = '¿Con qué firmeza aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
-       caption = str_wrap(caption_grafo1, 205))+
+       caption = str_wrap(caption_grafo2, 170))+
   theme_article_pride +
   theme(axis.ticks = element_blank())
 
-ggsave("figures/grafico2_lapop_pride.png", device = "png", width = 12.5, height = 7, dpi = 900)
+ggsave("figures/grafico2_lapop_pride.png", 
+       device = "png", 
+       width = 12.5, 
+       height = 7, 
+       dpi = 900)
 
 
 
