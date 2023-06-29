@@ -121,7 +121,8 @@ grafico2 <-
        subtitle = '¿Con qué firmeza aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
        caption = str_wrap(caption_grafo2, 170))+
   theme_article_pride +
-  theme(axis.ticks = element_blank())
+  theme(axis.ticks = element_blank(),
+        plot.title = element_text(face = 'bold'))
 
 ggsave("figures/grafico2_lapop_pride.png", 
        device = "png", 

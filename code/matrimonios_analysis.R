@@ -9,6 +9,7 @@
 if(!require(tidyverse)) install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 if(!require(lubridate)) install.packages("lubridate", repos = "http://cran.us.r-project.org")
 if(!require(stringr)) install.packages("lubridate", repos = "http://cran.us.r-project.org")
+if(!require(patchwork)) install.packages("patchwork", repos = "http://cran.us.r-project.org")
 
 # Cargar datos
 
@@ -37,11 +38,11 @@ meses <- data.frame(
 # Crear opciones estéticas
 
 theme_article_pride <-
-  theme_bw() +
+  theme_bw(base_size = 12) +
   theme(panel.grid = element_blank(),
+        axis.text.y = element_blank(),
         plot.caption = element_text(hjust = 0, face = 'italic'),
         legend.background = element_blank())
-
 
 # Preparación de la base de datos ----------------------------------------------------------------
 
@@ -97,15 +98,19 @@ grafico_matrimonios <-
   grafico_matrimonios_comp <-
   matrimonios %>% 
   filter(orientacion == 'Mismo sexo',
-         periodo > as.Date('2019-06-01')) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
+         periodo %>%  between(as.Date('2019-07-01'),as.Date('2022-12-01'))) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
   ggplot(aes(periodo, num)) +
   geom_col(fill = quant_blue, colour = 'black') +
-  scale_x_date(date_breaks = '3 months', 
+  scale_y_continuous(breaks = seq(0, 140, 20)) +
+  scale_x_date(date_breaks = '6 months', 
                date_labels = '%b-%y') +
-  theme_article_pride +
   labs(x = '',
-       y = 'Número de matrimonios registrados del mismo sexo')
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) 
+       y = 'Número de matrimonios entre el mismo sexo',
+       title = 'Matrimonios del mismo sexo en Ecuador') +
+  theme_article_pride +
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
+        plot.title = element_text(size = 12),
+        axis.text.y = element_text(size = 10),)
 
 grafico_matrimonios
 
@@ -113,17 +118,37 @@ grafico_matrimonios
 
 grafico_matrimonios_comp <-
   matrimonios %>% 
-  # filter(orientacion == 'Mismo sexo') %>% 
-  ggplot(aes(periodo, log(num), colour = orientacion)) +
+  filter(periodo %>%  between(as.Date('2019-07-01'), as.Date('2022-12-01'))) %>% 
+  ggplot(aes(periodo, log(num + 1), colour = orientacion)) +
   geom_line() +
   geom_point(size = 1) +
   scale_x_date(date_breaks = '6 months', 
                date_labels = '%b-%y') +
   geom_vline(xintercept = as.numeric(as.Date('2016-04-01')),
              colour = 'blue', 
-             linetype = 'dashed')+
+             linetype = 'dashed') +
+  labs(x = '',
+       y = 'Ln(x+1) del número de matrimonios',
+       colour = 'Tipo de matrimonio',
+       title = 'Comparación entre matrimonios de diferente sexo y mismo sexo') +
   theme_article_pride +
-  theme(axis.text.x = element_text(angle = 90, vjust = 0.5)) 
+  theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
+        legend.position = c(0.8,0.7),
+        axis.text.y = element_text(size = 10),
+        plot.title = element_text(size = 12)) 
 
-grafico_matrimonios
+grafico_matrimonios_comp 
+
+
+grafico_matrimonios + grafico_matrimonios_comp + 
+  plot_layout(ncol = 2) + 
+  plot_annotation(title = 'Matrimonio Igualitario en Ecuador 2019-2022',
+                  subtitle = 'Datos del Registro de Matrimonios y Divorcios INEC/Registro Civil',
+                  caption = str_wrap('Nota: El número de matrimonios del mismos sexo se calcula como el número de matrimonios donde ambos contrayentes reportan ser del mismo sexo. El panel derecho compara la transformacion ln(x+1) del número de matrimonios.
+                  Fuente: INEC.', 150),
+                  theme = theme(plot.caption = element_text(hjust = 0, face = 'italic'),
+                                plot.title = element_text(face = 'bold'),
+                                text = element_text(size = 15)))
+
+ggsave("figures/grafico_matrimonios.png", device = "png", width = 12.5, height = 8.5, dpi = 900)
 

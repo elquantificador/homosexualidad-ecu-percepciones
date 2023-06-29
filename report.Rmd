@@ -1,8 +1,8 @@
 ---
 title: 'LGBTQ+: ¿qué piensan los ecuatorianos?'
 output:
-  word_document: default
   html_document: default
+  word_document: default
 date: "2023-06-29"
 bibliography: refs.bib
 csl: style.csl
@@ -31,6 +31,10 @@ Por otro lado, ante una denuncia presentada por la pareja de activistas ante la 
 
 Entre 2012 y 2016 se tuvo una considerable recuperación en el porcentaje de aprobación y una diferencia no estadísticamente significativa entre 2016 y 2019. Una vez más, es complicado conocer las razones de este aumento, pero existe la posibilidad que la legalización de la unión de hecho entre personas del mismo sexo en 2014, la aprobación de algunas figuras cercanas al correísmo de una sentencia aprobatoria del matrimonio igualitario de la Corte Constitucional en 2015 y una opinión de la Corte Interamericana de Derechos Humanos hayan influenciado positivamente la aprobación de este derecho en la población. 
 
+¿Que ha sucedido desde la legalización del matrimonio igualitario? Utilizamos datos del INEC/Registro Civil para calcular el número de matrimonios del mismo sexo desde su legalización. A continuación graficamos los resultados a partir de Julio 2019 hasta Diciembre 2022.
 
+```{r}
+knitr::include_graphics('figures/grafico_matrimonios.png')
+```
 
 # Referencias
