@@ -38,18 +38,12 @@ meses <- data.frame(
 # Crear opciones estéticas
 
 theme_article_pride <-
-  theme_bw(base_size = 14) +
+  theme_classic(base_size = 14) +
   theme(panel.grid = element_blank(),
         axis.text.y = element_blank(),
         plot.caption = element_text(hjust = 0, face = 'italic'),
+        axis.line = element_line(colour = 'grey60'),
         legend.background = element_blank())
-
-# Diseño de imágenes
-
-quant_blue<-'#09A4CC'
-quant_grey<-'#5C7C94'
-quant_orange<-'#F8754D'
-quant_red<-'#F44D54'
 
 # Preparación de la base de datos ----------------------------------------------------------------
 
@@ -101,6 +95,10 @@ matrimonios <-
   
 # Análisis ----------------------------------------------------------------
 
+lgbt_palette <- 
+  palette_lgbtq('progress') %>% 
+  as.vector()
+
 grafico_matrimonios <-
   matrimonios %>% 
   filter(orientacion == 'Mismo sexo',
@@ -108,7 +106,7 @@ grafico_matrimonios <-
                               as.Date('2022-12-01'))) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
   mutate(cumsum = cumsum(num)) %>% 
   ggplot(aes(periodo, cumsum)) +
-  geom_line(colour = quant_blue) +
+  geom_line(colour = '#FFC0CB') +
   geom_point(color = 'black') + 
   scale_x_date(date_breaks = '3 months', 
                date_labels = '%b-%y') +
@@ -148,9 +146,6 @@ ggsave("figures/grafico_matrimonios.png", device = "png", width = 12.5, height =
 #   theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
 #         legend.position = c(0.8,0.7),
 #         plot.title = element_text(face = 'bold')) 
-
-grafico_matrimonios_comp 
-
 
 # grafico_matrimonios + grafico_matrimonios_comp + 
 #   plot_layout(ncol = 2) + 

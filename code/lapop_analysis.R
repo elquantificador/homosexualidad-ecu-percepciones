@@ -8,6 +8,7 @@
 
 if(!require(tidyverse)) install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 if(!require(survey)) install.packages("survey", repos = "http://cran.us.r-project.org")
+if(!require(gglgbtq)) install.packages("gglgbtq", repos = "http://cran.us.r-project.org")
 
 # Descargar y cargar base de datos
 
@@ -35,10 +36,11 @@ quant_red<-'#F44D54'
 # Creamos un theme para los gráficos de ggplot2
 
 theme_article_pride <-
-  theme_bw(base_size = 14) +
+  theme_classic(base_size = 14) +
   theme(panel.grid = element_blank(),
         axis.text.y = element_blank(),
         plot.caption = element_text(hjust = 0, face = 'italic'),
+        axis.line = element_line(colour = 'grey60'),
         legend.background = element_blank())
 
 # Análisis ----------------------------------------------------------------
@@ -77,10 +79,17 @@ hsmxl_marr_time <-
 caption_grafo1<-
   'Las cifras representan el % de personas que respondieron puntuaciones del 6 al 10 en la pregunta, donde 1 es extrema desaprobación y 10 es extrema aprobación. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. Las encuestas fueron realizadas de enero a marzo de cada año, excepto la ronda 2016, realizada de noviembre 2016 a enero 2017. Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org. '
 
+lgbt_palette <- 
+  palette_lgbtq('progress') %>% 
+  as.vector()
+
+lgbt_palette <-
+  lgbt_palette[!lgbt_palette %in% c('#FFFFFF', '#24408e')]
+
 grafico1 <- 
-  ggplot(hsmxl_pol_time, aes(x = as.factor(year), y = hmsxl_pol))+
-  geom_col(fill = quant_blue,
-           color = 'black', 
+  ggplot(hsmxl_pol_time, aes(x = as.factor(year), y = hmsxl_pol, fill = as.factor(year)))+
+  geom_col(color = 'black',
+           width = 0.5,
            linewidth = 0.7)+
   geom_errorbar(aes(ymin = hmsxl_pol - 1.96*se,
                     ymax = hmsxl_pol + 1.96*se),
@@ -92,7 +101,9 @@ grafico1 <-
        y = '% de aprobación de población en edad de votar (16+)',
        title = 'Aprobación del derecho a postularse a cargos políticos de la comunidad homosexual en Ecuador',
        subtitle = '¿Con qué firmeza aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
-       caption = str_wrap(caption_grafo1, 205))+
+       caption = str_wrap(caption_grafo1, 205)) +
+  scale_fill_manual(values = lgbt_palette) +
+  guides(fill = F) +
   theme_article_pride +
   theme(axis.ticks = element_blank(),
         plot.title = element_text(face = 'bold'))
@@ -108,8 +119,9 @@ Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de A
 grafico2 <- 
   ggplot(hsmxl_marr_time, aes(x = as.factor(year), y = hmsxl_marr, fill = as.factor(year)))+
   geom_col(color = 'black', 
-           linewidth = 0.7)+
-  scale_fill_manual(values = palette_lgbtq('rainbow')) +
+           linewidth = 0.7,
+           width = 0.5)+
+  scale_fill_manual(values = lgbt_palette) +
   geom_errorbar(aes(ymin = hmsxl_marr - 1.96*se,
                     ymax = hmsxl_marr + 1.96*se),
                 width = 0.3)+
@@ -131,6 +143,4 @@ ggsave("figures/grafico2_lapop_pride.png",
        width = 12.5, 
        height = 7, 
        dpi = 900)
-
-
 
