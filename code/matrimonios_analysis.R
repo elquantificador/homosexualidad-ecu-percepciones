@@ -95,10 +95,6 @@ matrimonios <-
   
 # Análisis ----------------------------------------------------------------
 
-lgbt_palette <- 
-  palette_lgbtq('progress') %>% 
-  as.vector()
-
 grafico_matrimonios <-
   matrimonios %>% 
   filter(orientacion == 'Mismo sexo',
@@ -123,7 +119,11 @@ grafico_matrimonios <-
 
 grafico_matrimonios
 
-ggsave("figures/grafico_matrimonios.png", device = "png", width = 12.5, height = 8.5, dpi = 900)
+ggsave("figures/grafico_matrimonios.png", 
+       device = "png", 
+       width = 12.5, 
+       height = 8.5, 
+       dpi = 900)
 
 # Crear un gráfico de número de 
 
