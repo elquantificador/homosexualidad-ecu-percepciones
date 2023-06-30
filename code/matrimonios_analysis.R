@@ -44,6 +44,13 @@ theme_article_pride <-
         plot.caption = element_text(hjust = 0, face = 'italic'),
         legend.background = element_blank())
 
+# Diseño de imágenes
+
+quant_blue<-'#09A4CC'
+quant_grey<-'#5C7C94'
+quant_orange<-'#F8754D'
+quant_red<-'#F44D54'
+
 # Preparación de la base de datos ----------------------------------------------------------------
 
 # Preparar la base de datos para tener una lista de matrimonios del mismo sexo y diferente sexo, por mes por año en Ecu. 
@@ -84,7 +91,7 @@ matrimonios19 <-
   summarise(num = n()) %>% 
   ungroup()
   
-# Create the master dataset
+# Crear la base maestra
 
 matrimonios <-
   matrimonios19 %>%
@@ -95,34 +102,38 @@ matrimonios <-
 # Análisis ----------------------------------------------------------------
 
 grafico_matrimonios <-
-  grafico_matrimonios_comp <-
   matrimonios %>% 
   filter(orientacion == 'Mismo sexo',
          periodo %>%  between(as.Date('2019-07-01'),as.Date('2022-12-01'))) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
-  ggplot(aes(periodo, num)) +
-  geom_col(fill = quant_blue, colour = 'black') +
-  scale_y_continuous(breaks = seq(0, 140, 20)) +
+  mutate(cumsum = cumsum(num)) %>% 
+  ggplot(aes(periodo, cumsum)) +
+  geom_line(colour = quant_blue) +
+  geom_point(color = 'black') + 
   scale_x_date(date_breaks = '6 months', 
                date_labels = '%b-%y') +
   labs(x = '',
        y = 'Número de matrimonios entre el mismo sexo',
-       title = 'Matrimonios del mismo sexo en Ecuador') +
+       title = 'Matrimonios del mismo sexo en Ecuador 2019-2022 (mensual)',
+       subtitle = 'Número de matrimonios del mismo sexo acumulados por cada mes.',
+       caption = str_wrap('Nota: El número de matrimonios del mismos sexo se calcula como el número de matrimonios donde ambos contrayentes reportan ser del mismo sexo. Fuente: INEC.')) +
   theme_article_pride +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
         plot.title = element_text(size = 12),
-        axis.text.y = element_text(size = 10),)
+        axis.text.y = element_text(size = 10))
 
 grafico_matrimonios
 
-# Crear una gráfica de serie de tiempo para matrimonios mismo sexo vs diferente sexo
+ggsave("figures/grafico_matrimonios.png", device = "png", width = 12.5, height = 8.5, dpi = 900)
+
+# Crear un gráfico de número de 
 
 grafico_matrimonios_comp <-
   matrimonios %>% 
-  filter(periodo %>%  between(as.Date('2019-07-01'), as.Date('2022-12-01'))) %>% 
+  filter(periodo %>%  between(as.Date('2019-07-01'), as.Date('2022-12-01'))) %>%
   ggplot(aes(periodo, log(num + 1), colour = orientacion)) +
   geom_line() +
   geom_point(size = 1) +
-  scale_x_date(date_breaks = '6 months', 
+  scale_x_date(date_breaks = '3 months', 
                date_labels = '%b-%y') +
   geom_vline(xintercept = as.numeric(as.Date('2016-04-01')),
              colour = 'blue', 
@@ -140,15 +151,13 @@ grafico_matrimonios_comp <-
 grafico_matrimonios_comp 
 
 
-grafico_matrimonios + grafico_matrimonios_comp + 
-  plot_layout(ncol = 2) + 
-  plot_annotation(title = 'Matrimonio Igualitario en Ecuador 2019-2022',
-                  subtitle = 'Datos del Registro de Matrimonios y Divorcios INEC/Registro Civil',
-                  caption = str_wrap('Nota: El número de matrimonios del mismos sexo se calcula como el número de matrimonios donde ambos contrayentes reportan ser del mismo sexo. El panel derecho compara la transformacion ln(x+1) del número de matrimonios.
-                  Fuente: INEC.', 150),
-                  theme = theme(plot.caption = element_text(hjust = 0, face = 'italic'),
-                                plot.title = element_text(face = 'bold'),
-                                text = element_text(size = 15)))
-
-ggsave("figures/grafico_matrimonios.png", device = "png", width = 12.5, height = 8.5, dpi = 900)
+# grafico_matrimonios + grafico_matrimonios_comp + 
+#   plot_layout(ncol = 2) + 
+#   plot_annotation(title = 'Matrimonio Igualitario en Ecuador 2019-2022',
+#                   subtitle = 'Datos del Registro de Matrimonios y Divorcios INEC/Registro Civil',
+#                   caption = str_wrap('Nota: El número de matrimonios del mismos sexo se calcula como el número de matrimonios donde ambos contrayentes reportan ser del mismo sexo. El panel derecho compara la transformacion ln(x+1) del número de matrimonios.
+#                   Fuente: INEC.', 150),
+#                   theme = theme(plot.caption = element_text(hjust = 0, face = 'italic'),
+#                                 plot.title = element_text(face = 'bold'),
+#                                 text = element_text(size = 15)))
 

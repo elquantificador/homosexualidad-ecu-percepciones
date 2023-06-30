@@ -118,7 +118,7 @@ grafico2 <-
   labs(x = '',
        y = '% de aprobación de población en edad de votar (16+)',
        title = 'Aprobación del derecho a postularse a cargos políticos de la comunidad homosexual en Ecuador',
-       subtitle = '¿Con qué firmeza aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
+       subtitle = '¿Con qué firmeza aprueba o desaprueba que las parejas del mismo sexo puedan tener el derecho a casarse?',
        caption = str_wrap(caption_grafo2, 170))+
   theme_article_pride +
   theme(axis.ticks = element_blank(),

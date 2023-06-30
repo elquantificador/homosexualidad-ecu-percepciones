@@ -1,5 +1,5 @@
 ---
-title: 'LGBTQ+: ¿qué piensan los ecuatorianos?'
+title: 'Homosexualidad: ¿qué piensan los ecuatorianos?'
 output:
   html_document: default
   word_document: default
@@ -15,7 +15,7 @@ knitr::opts_chunk$set(echo = F)
 
 # El matrimonio igualitario
 
-Si bien se habla mucho sobre la aprobación de los estilos de vida que deciden tomar las personas LGBTQ+ en la opinión pública, es menos conocido lo que se piensa sobre la participación de estos grupos en la vida cotidiana. El contraer matrimonio entre dos personas de cualquier sexo es uno de los derechos más básicos para la adecuada integración de los grupos LGBTI a la sociedad civil, sin embargo, en Ecuador solamente desde el 12 de Junio del 2019 se permitió el matrimonio igualitario, seis años después de que dos activitistas LGBTQ+ intentaron casarse en un Registro Civil sin éxito [@castro_2019]. 
+Si bien se habla mucho sobre la aprobación de la población los estilos de vida de las personas homosexuales, es menos conocido lo que se piensa sobre la participación de estos grupos en la vida cotidiana. El contraer matrimonio entre dos personas de cualquier sexo es uno de los derechos más básicos para la adecuada integración de las personas homosexuales a la sociedad civil, sin embargo, en Ecuador solamente desde el 12 de Junio del 2019 se permitió el matrimonio igualitario, seis años después de que dos activitistas LGBTQ+ intentaron, sin éxito, casarse en un Registro Civil [@castro_2019]. 
 
 La encuesta del Barómetro de las Américas (AB), ya utilizada en anteriores artículos del blog, nos permite evaluar la evolución de la opinión pública sobre el matrimonio igualitario en el Ecuador. El AB ha preguntado a la población en edad de votar (16+ años) sobre la firmeza de aprobación sobre el derecho de parejas del mismo sexo para contraer matrimonio. A continuación, presentamos el gráfico. 
 
@@ -23,9 +23,9 @@ La encuesta del Barómetro de las Américas (AB), ya utilizada en anteriores art
 knitr::include_graphics('figures/grafico2_lapop_pride.png')
 ```
 
-El gráfico representa el porcentaje de personas en edad de votar que indicaron respuestas de 6 al 10 en una pregunta que solicitaba indicar el nivel de apoyo al matrimonio entre personas del mismo sexo del 1 al 10, en donde 10 es máximo apoyo. Ventajosamente, el Ecuador ha observado un creciente apoyo a este derecho: entre el 2010 y 2019 el apoyo al matrimonio entre personas del mismo sexo se dobló: un aumento de 18.34 puntos porcentuales. 
+El gráfico representa el porcentaje de personas en edad de votar que indicaron respuestas de 6 al 10 en una pregunta que solicitaba indicar el nivel de apoyo al matrimonio entre personas del mismo sexo del 1 al 10, en donde 10 es máximo apoyo. 
 
-Sin embargo, es notable el cambio entre 2012 y 2014, en donde se observa una reducción del apoyo en más de 10 puntos porcentuales. Si bien no podemos asegurar una razón definitiva para esta reducción, es muy probable que, tras el intento fallido de matrimonio entre las activistas Pamela Troya y Gabriela Correa, la discusión de este derecho aumentó en gran medida. De hecho, el primer mandatario del país en el momento, el conservador de izquierda Rafael Correa, reiteró su desaprobación del matrimonio igualitario en 2013 así como del cambio de sexo en la cédula de identidad y el derecho de adopción de parejas del mismo sexo, en apoyo a "la familia tradicional" [@El_Universo_2013]. 
+Ventajosamente, el Ecuador ha observado un creciente apoyo a este derecho: entre el 2010 y 2019 el apoyo al matrimonio entre personas del mismo sexo se dobló: un aumento de 18.34 puntos porcentuales. Sin embargo, es notable el cambio entre 2012 y 2014, en donde se observa una reducción del apoyo en más de 10 puntos porcentuales. Si bien no podemos asegurar una razón definitiva para esta reducción, es muy probable que, tras el intento fallido de matrimonio entre las activistas Pamela Troya y Gabriela Correa, la discusión de este derecho aumentó en gran medida. De hecho, el primer mandatario del país en el momento, el conservador de izquierda Rafael Correa, reiteró su desaprobación del matrimonio igualitario en 2013 así como del cambio de sexo en la cédula de identidad y el derecho de adopción de parejas del mismo sexo, en apoyo a "la familia tradicional" [@El_Universo_2013]. 
 
 Por otro lado, ante una denuncia presentada por la pareja de activistas ante la imposibilidad de casarse, una jueza negó el recurso, reconociendo que en la Constitución del Ecuador, vigente desde el 2008 y apoyada por el gobierno de Correa, se reconoce el matrimonio entre un hombre y una mujer solamente, así como reconoció la "invocación de Dios en la Constitución" y que "no hay constitución sin valores ni principios", aun cuando el Ecuador es un estado laico [@alarcon_2018, @planv_2016]. Teniendo a figuras de autoridad como las mencionadas que rechazan el matrimonio igualitario, sería entendible observar una considerable reducción como la observada en la aprobación del matrimonio igualitario. No podemos analizar el efecto de la aprobación del matrimonio igualitario en la opinión pública, puesto que la aprobación se dio en junio y las encuestas finalizaron en febrero del 2019. 
 
