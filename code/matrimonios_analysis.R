@@ -38,7 +38,7 @@ meses <- data.frame(
 # Crear opciones estéticas
 
 theme_article_pride <-
-  theme_bw(base_size = 12) +
+  theme_bw(base_size = 14) +
   theme(panel.grid = element_blank(),
         axis.text.y = element_blank(),
         plot.caption = element_text(hjust = 0, face = 'italic'),
@@ -104,22 +104,24 @@ matrimonios <-
 grafico_matrimonios <-
   matrimonios %>% 
   filter(orientacion == 'Mismo sexo',
-         periodo %>%  between(as.Date('2019-07-01'),as.Date('2022-12-01'))) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
+         periodo %>%  between(as.Date('2019-07-01'),
+                              as.Date('2022-12-01'))) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
   mutate(cumsum = cumsum(num)) %>% 
   ggplot(aes(periodo, cumsum)) +
   geom_line(colour = quant_blue) +
   geom_point(color = 'black') + 
-  scale_x_date(date_breaks = '6 months', 
+  scale_x_date(date_breaks = '3 months', 
                date_labels = '%b-%y') +
+  scale_y_continuous(breaks = seq(0,1500, 250)) +
   labs(x = '',
        y = 'Número de matrimonios entre el mismo sexo',
-       title = 'Matrimonios del mismo sexo en Ecuador 2019-2022 (mensual)',
-       subtitle = 'Número de matrimonios del mismo sexo acumulados por cada mes.',
-       caption = str_wrap('Nota: El número de matrimonios del mismos sexo se calcula como el número de matrimonios donde ambos contrayentes reportan ser del mismo sexo. Fuente: INEC.')) +
+       title = 'Matrimonios del mismo sexo en Ecuador 2019-2022',
+       subtitle = 'Número de matrimonios del mismo sexo acumulados por cada mes',
+       caption = str_wrap('Nota: El número de matrimonios del mismo sexo se calcula como el número de matrimonios donde ambos contrayentes reportan ser del mismo sexo. Fuente: INEC.', 210)) +
   theme_article_pride +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
-        plot.title = element_text(size = 12),
-        axis.text.y = element_text(size = 10))
+        axis.text.y = element_text(size = 12),
+        plot.title = element_text(face = 'bold'))
 
 grafico_matrimonios
 
@@ -127,26 +129,25 @@ ggsave("figures/grafico_matrimonios.png", device = "png", width = 12.5, height =
 
 # Crear un gráfico de número de 
 
-grafico_matrimonios_comp <-
-  matrimonios %>% 
-  filter(periodo %>%  between(as.Date('2019-07-01'), as.Date('2022-12-01'))) %>%
-  ggplot(aes(periodo, log(num + 1), colour = orientacion)) +
-  geom_line() +
-  geom_point(size = 1) +
-  scale_x_date(date_breaks = '3 months', 
-               date_labels = '%b-%y') +
-  geom_vline(xintercept = as.numeric(as.Date('2016-04-01')),
-             colour = 'blue', 
-             linetype = 'dashed') +
-  labs(x = '',
-       y = 'Ln(x+1) del número de matrimonios',
-       colour = 'Tipo de matrimonio',
-       title = 'Comparación entre matrimonios de diferente sexo y mismo sexo') +
-  theme_article_pride +
-  theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
-        legend.position = c(0.8,0.7),
-        axis.text.y = element_text(size = 10),
-        plot.title = element_text(size = 12)) 
+# grafico_matrimonios_comp <-
+#   matrimonios %>% 
+#   filter(periodo %>%  between(as.Date('2019-07-01'), as.Date('2022-12-01'))) %>%
+#   ggplot(aes(periodo, log(num + 1), colour = orientacion)) +
+#   geom_line() +
+#   geom_point(size = 1) +
+#   scale_x_date(date_breaks = '3 months', 
+#                date_labels = '%b-%y') +
+#   geom_vline(xintercept = as.numeric(as.Date('2016-04-01')),
+#              colour = 'blue', 
+#              linetype = 'dashed') +
+#   labs(x = '',
+#        y = 'Ln(x+1) del número de matrimonios',
+#        colour = 'Tipo de matrimonio',
+#        title = 'Comparación entre matrimonios de diferente sexo y mismo sexo') +
+#   theme_article_pride +
+#   theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
+#         legend.position = c(0.8,0.7),
+#         plot.title = element_text(face = 'bold')) 
 
 grafico_matrimonios_comp 
 

@@ -90,11 +90,12 @@ grafico1 <-
             vjust = 6.5)+
   labs(x = '',
        y = '% de aprobación de población en edad de votar (16+)',
-       title = 'Aprobación del matrimonio igualitario en Ecuador',
+       title = 'Aprobación del derecho a postularse a cargos políticos de la comunidad homosexual en Ecuador',
        subtitle = '¿Con qué firmeza aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
        caption = str_wrap(caption_grafo1, 205))+
   theme_article_pride +
-  theme(axis.ticks = element_blank())
+  theme(axis.ticks = element_blank(),
+        plot.title = element_text(face = 'bold'))
 
 ggsave("figures/grafico1_lapop_pride.png", device = "png", width = 12.5, height = 7, dpi = 900)
 
@@ -105,21 +106,22 @@ caption_grafo2<-
 Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org.'
 
 grafico2 <- 
-  ggplot(hsmxl_marr_time, aes(x = as.factor(year), y = hmsxl_marr))+
-  geom_col(fill = quant_blue,
-           color = 'black', 
+  ggplot(hsmxl_marr_time, aes(x = as.factor(year), y = hmsxl_marr, fill = as.factor(year)))+
+  geom_col(color = 'black', 
            linewidth = 0.7)+
+  scale_fill_manual(values = palette_lgbtq('rainbow')) +
   geom_errorbar(aes(ymin = hmsxl_marr - 1.96*se,
                     ymax = hmsxl_marr + 1.96*se),
                 width = 0.3)+
   geom_text(aes(label = round(hmsxl_marr, 4)*100),
             size = 4,
-            vjust = 6.5)+
+            vjust = 6.5) +
   labs(x = '',
        y = '% de aprobación de población en edad de votar (16+)',
-       title = 'Aprobación del derecho a postularse a cargos políticos de la comunidad homosexual en Ecuador',
+       title = 'Aprobación del matrimonio igualitario en Ecuador',
        subtitle = '¿Con qué firmeza aprueba o desaprueba que las parejas del mismo sexo puedan tener el derecho a casarse?',
-       caption = str_wrap(caption_grafo2, 170))+
+       caption = str_wrap(caption_grafo2, 170)) +
+  guides(fill = F) +
   theme_article_pride +
   theme(axis.ticks = element_blank(),
         plot.title = element_text(face = 'bold'))
