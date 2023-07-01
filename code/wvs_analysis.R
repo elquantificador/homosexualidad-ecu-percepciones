@@ -6,7 +6,6 @@
 if(!require(tidyverse)) install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 if(!require(scales)) install.packages("scales", repos = "http://cran.us.r-project.org")
 if(!require(patchwork)) install.packages("patchwork", repos = "http://cran.us.r-project.org")
-if(!require(ggpubr)) install.packages("ggpubr", repos = "http://cran.us.r-project.org")
 if(!require(haven)) install.packages("haven", repos = "http://cran.us.r-project.org")
 if(!require(labelled)) install.packages("labelled", repos = "http://cran.us.r-project.org")
 
@@ -73,7 +72,7 @@ plot_WVS_veci_homo <-
 # Guardar el gráfico
 ggsave("figures/plot_WVS_veci_homo.png", plot = plot_WVS_veci_homo, device = "png", width = 12.5, height = 7, dpi = 900)
 
-# D081: Las parejas homosexuales son tan buenos padres como otras parejas ----
+## D081: Las parejas homosexuales son tan buenos padres como otras parejas ----
 # Renombrar los niveles de la variable
 WVSEcuador$D081 <- as_factor(WVSEcuador$D081)
 WVSEcuador$D081 <- droplevels(WVSEcuador$D081, exclude = c("Missing; Not available", "Not asked", "Not applicable", "No answer"))
