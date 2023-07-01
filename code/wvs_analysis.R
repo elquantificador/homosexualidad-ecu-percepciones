@@ -67,7 +67,7 @@ plot_WVS_veci_homo <-
   plot_annotation(title = "Preferiría no tener a un homosexual como vecino",
                   caption = str_wrap(caption_A124_09, 200),
                   theme = theme(plot.title = element_text(hjust = 0, colour="grey20", size=14),
-                                plot.caption = element_text(hjust = 0, colour="grey30")))
+                                plot.caption = element_text(hjust = 0, colour="grey30"))); plot_WVS_veci_homo
 
 # Guardar el gráfico
 ggsave("figures/plot_WVS_veci_homo.png", plot = plot_WVS_veci_homo, device = "png", width = 12.5, height = 7, dpi = 900)
@@ -91,7 +91,9 @@ plot_WVS_padres_homo <- D081 %>%
   labs(title = "Las parejas homosexuales son tan buenos padres como otras parejas", x = "", y = "",
        caption = str_wrap(caption_D081)) + theme_quanti() + theme(legend.position = "none") +
   scale_fill_manual(values = c("black", "#16607A", "#7595A6", "#C7CDD1", "#CC724D", "#A53816")) +
-  geom_text(aes(label = percent(freq, accuracy = 0.1)), stat = "identity", vjust = -0.5, color = "black", size = 3)
+  geom_text(aes(label = percent(freq, accuracy = 0.1)), stat = "identity", vjust = -0.5, color = "black", size = 3) +
+  theme(plot.title = element_text(colour="grey20", size = 14),
+        plot.caption = element_text(hjust = 0, colour="grey30")); plot_WVS_padres_homo
 
 # Guardar el gráfico
 ggsave("figures/plot_WVS_padres_homo.png", plot = plot_WVS_padres_homo, device = "png", width = 12.5, height = 7, dpi = 900)
