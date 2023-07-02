@@ -1,5 +1,7 @@
 # Artículo Percepciones de la Homosexualidad en Ecuador
 # Junio 2023
+# Autores: Daniel Sánchez y Alonso Quijano Ruiz
+
 # Descarga de la base de datos AmericasBarometer de LAPOP
 
 # Preliminares ------------------------------------------------------------
