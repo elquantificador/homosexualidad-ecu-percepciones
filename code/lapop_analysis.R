@@ -110,7 +110,7 @@ grafico2 <-
                 width = 0.3)+
   geom_text(aes(label = round(hmsxl_marr, 4)*100),
             size = 4,
-            vjust = -3.6) +
+            vjust = -4) +
   scale_y_continuous(limits = c(0, 0.4)) +
   labs(x = '',
        y = '% de aprobación de población en edad de votar (16+)',
