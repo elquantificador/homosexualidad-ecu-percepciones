@@ -29,7 +29,7 @@ theme_quanti <- function() {
   theme_classic() +
     theme(plot.title = element_text(color = "grey20", size = 14),
           plot.subtitle = element_text(color = "grey30"),
-          plot.caption = element_text(color = "grey30"),
+          plot.caption = element_text(color = "grey30", face = 'italic'),
           axis.ticks.x = element_blank(),
           legend.background = element_rect(fill = "white", size=0.5, linetype = "solid", color = "grey30"))
 }
@@ -43,7 +43,7 @@ A124_09 <- WVSEcuador %>% group_by(anio, sexo) %>%
 A124_09_2013 <- A124_09 %>% filter (anio == 2013) %>%
   ggplot(aes(x = sexo, y = mean, fill = sexo)) + geom_bar(stat = "identity", width = 0.5) +
   geom_errorbar(aes(ymin = mean - 1.96*se, ymax = mean + 1.96*se), width = 0.2) +
-  geom_text(aes(label = percent(mean, accuracy = 0.1)), color ="grey20", size = 4, vjust = -3) +
+  geom_text(aes(label = percent(mean, accuracy = 0.1)), color ="grey20", size = 4, vjust = -3.5) +
   labs(title = "2013", x = "", y = "") + 
   scale_y_continuous(limits = c(0,0.5)) +
   theme_quanti() + scale_fill_manual(values = c("#647A8F", "#FFAC8E")) +
@@ -53,7 +53,7 @@ A124_09_2013 <- A124_09 %>% filter (anio == 2013) %>%
 A124_09_2018 <- A124_09 %>% filter (anio == 2018) %>%
   ggplot(aes(x = sexo, y = mean, fill = sexo)) + geom_bar(stat = "identity", width = 0.5) +
   geom_errorbar(aes(ymin = mean - 1.96*se, ymax = mean + 1.96*se), width = 0.2) +
-  geom_text(aes(label = percent(mean, accuracy = 0.1)), color ="grey20", size = 4, vjust = -3) +
+  geom_text(aes(label = percent(mean, accuracy = 0.1)), color ="grey20", size = 4, vjust = -3.5) +
   labs(title = "2018", x = "", y = "") + 
   scale_y_continuous(limits = c(0,0.5)) +
   theme_quanti() + scale_fill_manual(values = c("#647A8F", "#FFAC8E"))
@@ -68,14 +68,14 @@ plot_WVS_veci_homo <-
   plot_layout(ncol = 2) + 
   plot_annotation(title = "Percepciones de los ecuatorianos sobre la homosexualidad",
                   subtitle = "¿Desearía no tener a un homosexual como vecino?",
-                  caption = str_wrap(caption_A124_09, 200),
+                  caption = str_wrap(caption_A124_09, 130),
                   theme = theme(plot.title = element_text(hjust = 0, color="grey20", face = "bold", size=14),
-                                plot.caption = element_text(hjust = 0, color="grey30"))); plot_WVS_veci_homo
+                                plot.caption = element_text(hjust = 0, color="grey30", face = 'italic'))); plot_WVS_veci_homo
 
 # Guardar el gráfico
-ggsave("figures/plot_WVS_veci_homo.png", plot = plot_WVS_veci_homo, device = "png", width = 12.5, height = 7, dpi = 900)
+ggsave("figures/plot_WVS_veci_homo.png", plot = plot_WVS_veci_homo, device = "png", width = 8, height = 5, dpi = 900)
 
-## D081: Las parejas homosexuales son tan buenos padres como otras parejas ----
+# D081: Las parejas homosexuales son tan buenos padres como otras parejas ----
 # Renombrar los niveles de la variable
 WVSEcuador$D081 <- as_factor(WVSEcuador$D081)
 WVSEcuador$D081 <- droplevels(WVSEcuador$D081, exclude = c("Missing; Not available", "Not asked", "Not applicable", "No answer"))

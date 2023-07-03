@@ -8,8 +8,9 @@
 
 if(!require(tidyverse)) install.packages("tidyverse", repos = "http://cran.us.r-project.org")
 if(!require(lubridate)) install.packages("lubridate", repos = "http://cran.us.r-project.org")
-if(!require(stringr)) install.packages("lubridate", repos = "http://cran.us.r-project.org")
+if(!require(stringr)) install.packages("stringr", repos = "http://cran.us.r-project.org")
 if(!require(patchwork)) install.packages("patchwork", repos = "http://cran.us.r-project.org")
+if(!require(janitor)) install.packages("janitor", repos = "http://cran.us.r-project.org")
 
 # Cargar datos
 
@@ -41,8 +42,9 @@ theme_article_pride <-
   theme_classic(base_size = 14) +
   theme(panel.grid = element_blank(),
         axis.text.y = element_blank(),
-        plot.caption = element_text(hjust = 0, face = 'italic'),
-        axis.line = element_line(colour = 'grey60'),
+        plot.title = element_text(color = "grey20"),
+        plot.subtitle = element_text(color = "grey30"),
+        plot.caption = element_text(color = "grey30", hjust = 0),
         legend.background = element_blank())
 
 # Preparación de la base de datos ----------------------------------------------------------------
@@ -102,27 +104,29 @@ grafico_matrimonios <-
                               as.Date('2022-12-01'))) %>%  # Se ignoran matrimonios del mismo sexo registrados antes de la legalizacion
   mutate(cumsum = cumsum(num)) %>% 
   ggplot(aes(periodo, cumsum)) +
-  geom_line(colour = '#FFC0CB') +
+  geom_line(colour = '#647A8F') +
   geom_point(color = 'black') + 
   scale_x_date(date_breaks = '3 months', 
                date_labels = '%b-%y') +
   scale_y_continuous(breaks = seq(0,1500, 250)) +
   labs(x = '',
-       y = 'Número de matrimonios entre el mismo sexo',
+       y = '',
        title = 'Matrimonios del mismo sexo en Ecuador 2019-2022',
        subtitle = 'Número de matrimonios del mismo sexo acumulados por cada mes',
-       caption = str_wrap('Nota: El número de matrimonios del mismo sexo se calcula como el número de matrimonios donde ambos contrayentes reportan ser del mismo sexo. Fuente: INEC.', 210)) +
+       caption = str_wrap('Nota: Fuente: INEC', 160)) +
   theme_article_pride +
   theme(axis.text.x = element_text(angle = 45, vjust = 0.5),
         axis.text.y = element_text(size = 12),
-        plot.title = element_text(face = 'bold'))
+        plot.title = element_text(face = 'bold'),
+        plot.caption = element_text(size = 8))
 
 grafico_matrimonios
 
 ggsave("figures/grafico_matrimonios.png", 
+       plot = grafico_matrimonios,
        device = "png", 
-       width = 12.5, 
-       height = 8.5, 
+       width = 7, 
+       height = 5, 
        dpi = 900)
 
 # Crear un gráfico de número de 

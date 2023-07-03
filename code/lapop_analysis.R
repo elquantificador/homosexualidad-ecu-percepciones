@@ -7,6 +7,7 @@
 # Cargar librerías
 
 if(!require(tidyverse)) install.packages("tidyverse", repos = "http://cran.us.r-project.org")
+if(!require(scales)) install.packages("scales", repos = "http://cran.us.r-project.org")
 if(!require(survey)) install.packages("survey", repos = "http://cran.us.r-project.org")
 
 # Descargar y cargar base de datos
@@ -30,9 +31,9 @@ ab_des<-svydesign(ids = ~ upm,
 theme_article_pride <-
   theme_classic(base_size = 14) +
   theme(panel.grid = element_blank(),
-        axis.text.y = element_blank(),
-        plot.caption = element_text(hjust = 0, face = 'italic'),
-        axis.line = element_line(colour = 'grey60'),
+        plot.title = element_text(color = "grey20"),
+        plot.subtitle = element_text(color = "grey30"),
+        plot.caption = element_text(color = "grey30", hjust = 0, face = 'italic'),
         legend.background = element_blank())
 
 # Análisis ----------------------------------------------------------------
@@ -69,31 +70,30 @@ hsmxl_marr_time <-
 # Serie de tiempo de aprobación de derechos políticos de homosexuales
 
 caption_grafo1<-
-  'Las cifras representan el % de personas que respondieron puntuaciones del 6 al 10 en la pregunta, donde 1 es extrema desaprobación y 10 es extrema aprobación. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. Las encuestas fueron realizadas de enero a marzo de cada año, excepto la ronda 2016, realizada de noviembre 2016 a enero 2017. Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org. '
+  'Las cifras representan el % de personas que respondieron puntuaciones del 6 al 10 en la pregunta, donde 1 es extrema desaprobación y 10 es extrema aprobación. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. Las encuestas fueron realizadas de enero a marzo de cada año, excepto la ronda 2016, realizada de noviembre 2016 a enero 2017. Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de América Latina (LAPOP), www.LapopSurveys.org.'
 
 grafico1 <- 
   ggplot(hsmxl_pol_time, aes(x = as.factor(year), y = hmsxl_pol, fill = as.factor(year)))+
-  geom_col(fill = "#FFAC8E",
+  geom_col(fill = "#647A8F",
            width = 0.5,
            linewidth = 0.7)+
   geom_errorbar(aes(ymin = hmsxl_pol - 1.96*se,
                     ymax = hmsxl_pol + 1.96*se),
                 width = 0.3)+
-  geom_text(aes(label = round(hmsxl_pol, 4)*100),
+  geom_text(aes(label = percent(hmsxl_pol, accuracy = 0.1)),
             size = 4,
             vjust = -3.2)+
   scale_y_continuous(limits = c(0,0.5)) +
   labs(x = '',
-       y = '% de aprobación de población en edad de votar (16+)',
+       y = '',
        title = 'Aprobación del derecho a postularse a cargos políticos de la comunidad homosexual en Ecuador',
-       subtitle = '¿Con qué firmeza aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
+       subtitle = '¿Aprueba o desaprueba que las personas homosexuales puedan postularse para cargos públicos?',
        caption = str_wrap(caption_grafo1, 160)) +
   guides(fill = F) +
   theme_article_pride +
-  theme(axis.ticks = element_blank(),
-        plot.title = element_text(face = 'bold'))
+  theme(plot.title = element_text(face = 'bold')); grafico1
 
-ggsave("figures/grafico1_lapop_pride.png", device = "png", width = 12.5, height = 7, dpi = 1200)
+ggsave("figures/grafico1_lapop_pride.png", device = "png", width = 12, height = 6, dpi = 1200)
 
 caption_grafo2<-
   'Las cifras representan el % de personas que respondieron puntuaciones del 6 al 10 en la pregunta, donde 1 es extrema desaprobación y 10 es extrema aprobación. Las barras representan intervalos de confianza del 95% con errores ajustados por diseño muestral multietapa estratificado. 
@@ -102,29 +102,28 @@ Fuente: El Barómetro de las Américas por el Proyecto de Opinión Pública de A
 
 grafico2 <- 
   ggplot(hsmxl_marr_time, aes(x = as.factor(year), y = hmsxl_marr, fill = as.factor(year)))+
-  geom_col(fill = "#FFAC8E",
+  geom_col(fill = "#647A8F",
            linewidth = 0.7,
            width = 0.5)+
   geom_errorbar(aes(ymin = hmsxl_marr - 1.96*se,
                     ymax = hmsxl_marr + 1.96*se),
                 width = 0.3)+
-  geom_text(aes(label = round(hmsxl_marr, 4)*100),
+  geom_text(aes(label = percent(hmsxl_marr, accuracy = 0.1)),
             size = 4,
             vjust = -4.5) +
   scale_y_continuous(limits = c(0, 0.4)) +
   labs(x = '',
-       y = '% de aprobación de población en edad de votar (16+)',
+       y = '',
        title = 'Aprobación del matrimonio igualitario en Ecuador',
-       subtitle = '¿Con qué firmeza aprueba o desaprueba que las parejas del mismo sexo puedan tener el derecho a casarse?',
-       caption = str_wrap(caption_grafo2, 160)) +
+       subtitle = '¿Aprueba que las parejas del mismo sexo puedan tener el derecho a casarse?',
+       caption = str_wrap(caption_grafo2, 140)) +
   guides(fill = F) +
   theme_article_pride +
-  theme(axis.ticks = element_blank(),
-        plot.title = element_text(face = 'bold'))
+  theme(plot.title = element_text(face = 'bold'),
+        plot.caption = element_text(size = 8)); grafico2
 
-ggsave("figures/grafico2_lapop_pride.png", 
+ggsave("figures/grafico2_lapop_pride.png",plot = grafico2, 
        device = "png", 
-       width = 12.5, 
-       height = 7, 
+       width = 8, 
+       height = 6, 
        dpi = 1200)
-
