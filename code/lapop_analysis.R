@@ -98,7 +98,7 @@ grafico2 <-
   theme(plot.title = element_text(face = 'bold'),
         plot.caption = element_text(size = 8)); grafico2
 
-ggsave("figures/grafico1_lapop_pride.png",plot = grafico2, 
+ggsave("figures/grafico_lapop_matrimonio.png",plot = grafico2, 
        device = "png", 
        width = 8, 
        height = 6, 
@@ -130,4 +130,4 @@ grafico1 <-
   theme_article_pride +
   theme(plot.title = element_text(face = 'bold')); grafico1
 
-ggsave("figures/grafico2_lapop_pride.png", device = "png", width = 12, height = 6, dpi = 1200)
+ggsave("figures/grafico_lapop_politicos.png", device = "png", width = 12, height = 6, dpi = 1200)
