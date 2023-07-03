@@ -30,7 +30,7 @@ knitr::include_graphics('figures/plot_WVS_veci_homo.png')
 El contraer matrimonio entre dos personas de cualquier sexo es uno de los derechos más básicos para la adecuada integración de las personas homosexuales a la sociedad civil. Sin embargo, en Ecuador solamente desde junio de 2019 se permite el matrimonio de personas del mismo sexo, años después de que dos parejas LGBTQ+ intentaran, sin éxito, casarse en un Registro Civil [@castro_2019]. La encuesta del Barómetro de las Américas (AB), ya utilizada en anteriores artículos de El Quantificador, nos permite evaluar la evolución de la opinión pública sobre el matrimonio igualitario en el Ecuador, como se ve a continuación.
 
 ```{r}
-knitr::include_graphics('figures/grafico2_lapop_pride.png')
+knitr::include_graphics('figures/grafico1_lapop_pride.png')
 ```
 
 Afortunadamente, en Ecuador se ha observado un creciente respaldo a los derechos de las personas LGBTQ+. Entre los años 2010 y 2019, el apoyo al matrimonio entre personas del mismo sexo se duplicó, con un incremento de 18.34 puntos porcentuales. Sin embargo, es importante destacar una caída en dicho apoyo entre los años 2012 y 2014. Aunque no se puede afirmar con certeza la razón exacta de esta reducción, es muy probable que el intento fallido de matrimonio entre las activistas Pamela Troya y Gabriela Correa en 2013 haya sido un factor influyente en este sentido. En ese momento, el entonces presidente del país, Rafael Correa, un conservador de izquierda, reiteró su desaprobación hacia el matrimonio igualitario, así como también expresó su oposición al cambio de sexo en la cédula de identidad y al derecho de adopción por parte de parejas del mismo sexo, en favor de lo que él llamó "la familia tradicional" [@El_Universo_2013].
@@ -54,7 +54,7 @@ El gráfico muestra la distribución acumulada del número de matrimonios desde 
 Más allá del matrimonio igualitario, la encuesta también consulta a los ciudadanos sobre su aprobación a los derechos políticos de las personas homosexuales. Específicamente, pregunta el grado de aprobación del derecho de las personas homosexuales de postularse a cargos políticos. A continuación mostramos los resultados.
 
 ```{r}
-knitr::include_graphics('figures/grafico1_lapop_pride.png')
+knitr::include_graphics('figures/grafico2_lapop_pride.png')
 ```
 
 Existe un constante aumento en la aprobación del derecho a postularse a cargos políticos de las personas homosexuales, superando el 40% de aprobación. Sin embargo, con más de un 50% de desaprobación, las posibilidades electorales de postulantes homosexuales están automáticamente en desventaja.
