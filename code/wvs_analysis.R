@@ -1,4 +1,4 @@
-# Este sctipt analiza las percepciones de los ecuatorianos sobre la homosexualidad usando la 
+# Este script analiza las percepciones de los ecuatorianos sobre la homosexualidad usando la
 # Encuesta Mundial de Valores (WVS). Los datos utilizados están almacenados en el GitHub del LIDE
 # https://github.com/laboratoriolide/WVSEcuador. Para consultar la fuente original, visita la 
 # página de la WVSA www.worldvaluessurvey.org.
