@@ -1,15 +1,14 @@
-Una perspectiva cuantitativa sobre las protestas en Ecuador
-Este repositorio contiene el código y los archivos necesarios para analizar la participación en protestas en Ecuador utilizando los datos de LAPOP.
+## Homosexualidad: ¿qué piensan los ecuatorianos?
+Este repositorio contiene el código y los archivos necesarios para reproducir el análisis del artículo de El Quantificador: [Homosexualidad: ¿qué piensan los ecuatorianos?](https://elquantificador.blog/post/valores/2023-07-02-homosexualidad-qu-piensan-los-ecuatorianos/)
 
 ## Requisitos
-R (se recomienda usar RStudio).
-Paquetes de R que se instalarán automáticamente al ejecutar los scripts.
-Opcionalmente LaTeX para compilar el artículo en PDF.
+- R (se recomienda usar RStudio).
+- Paquetes de R que se instalarán automáticamente al ejecutar los scripts.
+- Opcionalmente LaTeX para compilar el artículo en PDF.
 
 ## Cómo reproducir el análisis
-Clona o descarga este repositorio.
-Ejecuta code/protestas_download.R para descargar la base de datos desde Google Drive.
-Corre code/protestas_data_manipulation.R para procesar y guardar las bases de datos.
-Finalmente ejecuta code/protestas_analysis.R para generar las figuras y el artículo.
+- Clona o descarga este repositorio.
+- Ejecuta code/lapop_analysis.R, code/matrimonios_analysis.R y code/wvs_analysis.R.
+- Finalmente, puedes ejecutar reporte.Rmd para reproducir el texto del artículo.
 
-Para más información, revisa el [perfil de GitHub del autor](https://github.com/elquantificador).
+Para más información, revisa los perfiles de GitHub de los autores [dsanchezp18](https://github.com/elquantificador/homosexualidad-ecu-percepciones/commits?author=dsanchezp18) y [aquijanoruiz](https://github.com/aquijanoruiz).
