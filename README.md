@@ -9,6 +9,6 @@ Este repositorio contiene el código y los archivos necesarios para reproducir e
 ## Cómo reproducir el análisis
 - Clona o descarga este repositorio.
 - Ejecuta code/lapop_analysis.R, code/matrimonios_analysis.R y code/wvs_analysis.R.
-- Finalmente, puedes ejecutar reporte.Rmd para reproducir el texto del artículo.
+- Finalmente, puedes ejecutar `report/report.Rmd` para reproducir el texto del artículo.
 
 Para más información, revisa los perfiles de GitHub de los autores [dsanchezp18](https://github.com/elquantificador/homosexualidad-ecu-percepciones/commits?author=dsanchezp18) y [aquijanoruiz](https://github.com/aquijanoruiz).

@@ -2,6 +2,6 @@
 .Rhistory
 .RData
 .Ruserdata
-report.html
-report.docx
+report/report.html
+report/report.docx
 figures/*.png
