@@ -22,7 +22,7 @@ La homofobia se define como la "aversión hacia la homosexualidad o las personas
 Es importante destacar que la homofobia parece ser más prevalente entre los hombres que entre las mujeres. Según la misma encuesta de 2018, se observó que un 35% de los hombres encuestados manifestaron no querer tener un vecino homosexual, mientras que este porcentaje fue del 28% entre las mujeres. Una posible explicación es que los hombres homofóbicos consideran la homosexualidad como una perversión o enfermedad que amenaza su masculinidad. Un estudio de [-@verduzco2011homofobia] indica que los hombres homofóbicos carecen de empatía hacia las personas homosexuales, ya que las perciben como diferentes a los rasgos tradicionalmente asociados con la masculinidad, como la rudeza y la agresividad. Sin embargo, aquellos hombres que se identifican con características típicamente masculinas pero socialmente deseables, como la tenacidad y la determinación, tienden a mostrar menor nivel de homofobia. Esto resalta la importancia de abordar y educar a la sociedad en su conjunto, y de manera especial a los hombres, sobre el respeto hacia la diversidad sexual, al mismo tiempo que se trabaja para eliminar los estereotipos machistas arraigados.
 
 ```{r}
-knitr::include_graphics('figures/plot_WVS_veci_homo.png')
+knitr::include_graphics('../figures/plot_WVS_veci_homo.png')
 ```
 
 # El matrimonio igualitario
@@ -30,7 +30,7 @@ knitr::include_graphics('figures/plot_WVS_veci_homo.png')
 El contraer matrimonio entre dos personas de cualquier sexo es uno de los derechos más básicos para la adecuada integración de las personas homosexuales a la sociedad civil. Sin embargo, en Ecuador solamente desde junio de 2019 se permite el matrimonio de personas del mismo sexo, años después de que dos parejas LGBTQ+ intentaran, sin éxito, casarse en un Registro Civil [@castro_2019]. La encuesta del Barómetro de las Américas (AB), ya utilizada en anteriores artículos de El Quantificador, nos permite evaluar la evolución de la opinión pública sobre el matrimonio igualitario en el Ecuador, como se ve a continuación.
 
 ```{r}
-knitr::include_graphics('figures/grafico_lapop_matrimonio.png')
+knitr::include_graphics('../figures/grafico_lapop_matrimonio.png')
 ```
 
 Afortunadamente, en Ecuador se ha observado un creciente respaldo a los derechos de las personas LGBTQ+. Entre los años 2010 y 2019, el apoyo al matrimonio entre personas del mismo sexo se duplicó, con un incremento de 18.34 puntos porcentuales. Sin embargo, es importante destacar una caída en dicho apoyo entre los años 2012 y 2014. Aunque no se puede afirmar con certeza la razón exacta de esta reducción, es muy probable que el intento fallido de matrimonio entre las activistas Pamela Troya y Gabriela Correa en 2013 haya sido un factor influyente en este sentido. En ese momento, el entonces presidente del país, Rafael Correa, un conservador de izquierda, reiteró su desaprobación hacia el matrimonio igualitario, así como también expresó su oposición al cambio de sexo en la cédula de identidad y al derecho de adopción por parte de parejas del mismo sexo, en favor de lo que él llamó "la familia tradicional" [@El_Universo_2013].
@@ -42,7 +42,7 @@ No se puede determinar el efecto de la aprobación del matrimonio igualitario en
 ¿Qué ha sucedido desde la legalización del matrimonio igualitario? Utilizamos datos del INEC/Registro Civil para calcular el número de matrimonios del mismo sexo desde su legalización. A continuación ilustramos los resultados desde julio 2019 hasta diciembre 2022.
 
 ```{r}
-knitr::include_graphics('figures/grafico_matrimonios.png')
+knitr::include_graphics('../figures/grafico_matrimonios.png')
 ```
 
 El gráfico muestra la distribución acumulada del número de matrimonios desde julio del 2019. El incremento más empinado ocurre en la segunda mitad del 2019, inmediatamente después de la legalización del matrimonio igualitario. Este fenómeno es entendible, considerando que muchas parejas esperaron por este momento para contraer matrimonio. Tras una parada en seco debido al confinamiento por el COVID-19 en abril 2020, se evidencia la normalización de los matrimonios del mismo sexo, quizás llegando a su tendencia normal. En cualquier caso, los matrimonios del mismo sexo siguen representando una proporción pequeña del total de matrimonios. El estudio de este fenómeno es complicado debido a la dificultad de obtener autoidentificación de orientación sexual en encuestas, sin embargo, algunos factores económico/laborales podrían disuadir a parejas homosexuales para casarse[^2].
@@ -54,7 +54,7 @@ El gráfico muestra la distribución acumulada del número de matrimonios desde 
 Más allá del matrimonio igualitario, la encuesta también consulta a los ciudadanos sobre su aprobación a los derechos políticos de las personas homosexuales. Específicamente, pregunta el grado de aprobación del derecho de las personas homosexuales de postularse a cargos políticos. A continuación mostramos los resultados.
 
 ```{r}
-knitr::include_graphics('figures/grafico_lapop_politicos.png')
+knitr::include_graphics('../figures/grafico_lapop_politicos.png')
 ```
 
 Existe un constante aumento en la aprobación del derecho a postularse a cargos políticos de las personas homosexuales, superando el 40% de aprobación. Sin embargo, con más de un 50% de desaprobación, las posibilidades electorales de postulantes homosexuales están automáticamente en desventaja.
