@@ -1,0 +1,4 @@
+source_name,institution,period,official_url,downloaded_file,script
+AmericasBarometer Ecuador (base preparada por LIDE),LAPOP Vanderbilt University,2004-2019,https://www.LapopSurveys.org,data/ab_04_19.csv,code/lapop_analysis.R
+Encuesta Mundial de Valores (WVS) Ecuador,World Values Survey Association,2013 y 2018,https://www.worldvaluessurvey.org,(lectura directa desde GitHub laboratoriolide/WVSEcuador; sin archivo local),code/wvs_analysis.R
+Estadistica de Matrimonios (EMA) 2019-2022,INEC y Registro Civil,2019-2022,https://www.ecuadorencifras.gob.ec/matrimonios-divorcios/,data/EMA_2019.csv; data/EMA_2020.csv; data/EMA_2021.csv; data/EMA_2022.csv,manual
